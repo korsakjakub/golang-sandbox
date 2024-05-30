@@ -1,0 +1,42 @@
+package main
+
+templ base(title string, tiles [9]string, turn string) {
+	<html>
+		<head>
+			<title>{ title }</title>
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+			<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+		</head>
+		<body>
+			<main class="overflow-auto">
+				<h1>It's { turn }'s turn</h1>
+				<table id="game">
+					<tr>
+						<td><button hx-post="/move/0" hx-swap="innerHTML">{ tiles[0] }</button></td>
+						<td><button>{ tiles[1] }</button></td>
+						<td><button>{ tiles[2] }</button></td>
+					</tr>
+					<tr>
+						<td><button>{ tiles[3] }</button></td>
+						<td><button>{ tiles[4] }</button></td>
+						<td><button>{ tiles[5] }</button></td>
+					</tr>
+					<tr>
+						<td><button>{ tiles[6] }</button></td>
+						<td><button>{ tiles[7] }</button></td>
+						<td><button>{ tiles[8] }</button></td>
+					</tr>
+				</table>
+				<!--
+				<button
+					hx-post="/reset"
+					hx-target="#game"
+					hx-swap-oob="true"
+				>
+					Reset
+				</button>
+        -->
+			</main>
+		</body>
+	</html>
+}
